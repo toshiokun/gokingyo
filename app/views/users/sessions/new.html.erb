@@ -1,5 +1,7 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
 
+<div class="row-fluid">
+  <div class="span6 offset3">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -19,8 +21,9 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン", class: "btn btn-large btn-warning" %>
   </div>
 <% end %>
-
+</div>
+</div>
 <%= render "users/shared/links" %>

@@ -1,0 +1,9 @@
+ja:
+  helpers:
+    label:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（再入力）
+        name: 名前
+        remember_me: 次回からパスワード入力を省く

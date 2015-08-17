@@ -1,4 +1,7 @@
+$navbarBackground:     #00FFFF;
 @import "bootstrap";
+@import "bootstrap-responsive";
+
 
 /* mixins, variables, etc. */
 
@@ -85,6 +88,11 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+.navbar {
+  min-height: 38px;
+  background-color: #00FFFF;
 }
 
 /* footer */
@@ -341,10 +349,4 @@ form.company {
     border-collapse: separate;
     border-spacing: 0px 15px;
     font-size: 12px;
-}
-
-/* extend bootstrap */
-.navbar-inverse-red {
-  @extend .navbar-inverse !optional;
-  background-color: red;
 }
