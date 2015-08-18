@@ -1,0 +1,11 @@
+ja:
+  helpers:
+    label:
+      user:
+        name: 名前
+        email: メールアドレス
+        profile: プロフィール
+        password: パスワード
+        password_confirmation: パスワード（再入力）
+        current_password: 現在のパスワード
+        remember_me: 次回からパスワード入力を省く
