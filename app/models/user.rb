@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
    	validates :name, presence: true, length: { maximum: 20}
+    has_many :created_events, class_name: 'Event', foreign_key: :user_id
 
     def self.from_omniauth(auth)
         where(provider: auth["provider"], uid: auth["uid"]).first_or_create do |user|
