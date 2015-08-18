@@ -1,0 +1,19 @@
+ja:
+  activerecord: 
+    models:
+      user: ユーザー
+      event: イベント
+      ticket: チケット
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+      event: 
+        name: 名前 
+        place: 場所 
+        start_time: 開始時間 
+        end_time: 終了時間 
+        content: 内容 
+      ticket:
+        comment: コメント

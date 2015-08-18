@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events do
+    resources :tickets
+  end
 
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   root "pages#index"
