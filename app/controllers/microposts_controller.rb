@@ -1,5 +1,11 @@
 class MicropostsController < ApplicationController
-	
+	PER = 10
+
+	def index
+		@event = Event.find(params[:event_id])
+		@microposts = @event.microposts.order(:created_at)
+	end
+
 	def create
 		micropost = current_user.microposts.build do |m|
 			m.event_id = params[:event_id]

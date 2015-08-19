@@ -5,7 +5,7 @@
       <nav>
         <ul class="nav">
           <% if user_signed_in? %>
-          <div class="form-group navbar-form navbar-left">
+          <div class="form-group navbar-form navbar-left pull-right">
             <%= search_form_for(@search, url: events_path) do |f| %>
               <%= f.text_field :name_cont, :placeholder => "いどばた検索", :size => "10px" %>
               <%= button_tag( class: "btn btn-default btn-sm") do %>

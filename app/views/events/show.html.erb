@@ -53,9 +53,14 @@
 </div>
 <div>
 	<% if @event.created_by?(current_user) %>
+		<div class="col-xs-4">
 		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info btn-lg btn-block' %>
+		</div>
+		<div class="col-xs-4">
 		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
+		</div>
 	<% end %>
+	<div class="col-xs-4">
 	<% if @ticket %>
 		<%= link_to '参加をキャンセルする', event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning btn-lg btn-block" %>
 	<% elsif user_signed_in? %>
@@ -83,8 +88,10 @@
 		</div>
 
 	<% else %>
+	</div>
 	 <%= link_to '参加する', new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block" %>
 	<% end %>
+	</div>
 	<hr>
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -125,12 +132,12 @@
 				</ul>
 			</div>
 		</div>
-
+<%= link_to 'コメント一覧', event_microposts_path(@event), class: "btn btn-primary btn-lg btn-block" %>
 
 		<%= form_for(@event.microposts.build, url: event_microposts_path(@event)) do |f| %>
 		<%= f.label :comment %>
 		<%= f.text_field :comment, class: 'form-control' %>
-		<%= f.button '投稿', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
+		<%= f.button '投稿する', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
 		<% end %>	
 	</div>
 </div>
