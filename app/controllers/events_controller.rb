@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 	def create
 		@event = current_user.created_events.build(event_params)
 		if @event.save
-			redirect_to @event, notice: 'イベントを作成しました'
+			redirect_to @event, notice: 'いどばたを作成しました'
 		else
 			render 'new'
 		end
