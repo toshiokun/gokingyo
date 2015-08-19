@@ -2,8 +2,13 @@ class EventsController < ApplicationController
 	PER = 10
 
 	def index
-		@search = Event.page(params[:page]).per(PER).order(:start_time).search(search_params)
-		@events = @search.result(distinct: true)
+		if params[:category_id].nil?
+			@search = Event.page(params[:page]).per(PER).order(:start_time).search(search_params)
+			@events = @search.result(distinct: true)
+		else
+			@search = Event.page(params[:page]).per(PER).where(category_id: params[:category_id]).order(:start_time).search(search_params)
+			@events = @search.result(distinct: true)
+		end
 	end
 
 	def edit
@@ -48,7 +53,7 @@ class EventsController < ApplicationController
 	private
 	def event_params
 		params.require(:event).permit(
-			:name, :place, :content, :start_time, :end_time, 
+			:name, :place, :content, :category_id, :start_time, :end_time, 
 			:event_image, :event_image_cache, :remove_event_image
 		)
 	end

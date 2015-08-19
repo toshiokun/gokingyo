@@ -16,12 +16,18 @@
 		<% if alert %>
 		<p class="alert"><%= alert %></p>
 		<% end %>
+		<% if user_signed_in? %>
 		<div class="col-xs-2">
 		<%= render 'layouts/sidebar_left' %>
 		</div>
 		<div class="col-xs-6">
 		<%= yield %>
 		</div>
+		<% else %>
+		<div class="col-xs-12">
+		<%= yield %>
+		</div>
+		<% end %>
 	</div>
 		<%= render 'layouts/footer' %>
 	</div>
