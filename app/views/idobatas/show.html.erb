@@ -1,23 +1,18 @@
 <div class="page-header">
 	<h1>
-		<%= @event.name %>
+		<%= @idobata.name %>
 	</h1>
 </div>
 
 <div class="row">
 <div class="col-xs-8">
-	<% if @event.event_image? %>
-		<div class="thumnail">
-			<%= image_tag @event.event_image.url %>
-		</div>
-	<% end %>
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<div class="panel-title">主催者</div>
 	</div>
 	<div class="panel-body">
-		<% if @event.user %>
-		<%= @event.user.name %>
+		<% if @idobata.user %>
+		<%= @idobata.user.name %>
 		<% else %>
 		退会したユーザーです
 		<% end %>
@@ -29,7 +24,7 @@
 		開催時間
 	</div>
 	<div class="panel-body">
-		<%= @event.start_time.strftime('%Y/%m/%D %H:%M') %> - <%= @event.end_time.strftime('%Y/%m/%D %H:%M') %>
+		<%= @idobata.start_time.strftime('%Y/%m/%D %H:%M') %> - <%= @idobata.end_time.strftime('%Y/%m/%D %H:%M') %>
 	</div>
 </div>
 
@@ -38,7 +33,7 @@
 		開催場所
 	</div>
 	<div class="panel-body">
-		<%= @event.place %>
+		<%= @idobata.place %>
 	</div>
 </div>
 
@@ -47,17 +42,17 @@
 		イベント内容
 	</div>
 	<div class="panel-body">
-		<%= @event.content %>
+		<%= @idobata.content %>
 	</div>
 </div>
 </div>
 <div class="col-xs-4">
-	<% if @event.created_by?(current_user) %>
-		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info btn-lg btn-block' %>
-		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
+	<% if @idobata.created_by?(current_user) %>
+		<%= link_to 'イベントを編集する', edit_idobata_path(@idobata), class: 'btn btn-info btn-lg btn-block' %>
+		<%= link_to 'イベントを削除する', idobata_path(@idobata), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
 	<% end %>
 	<% if @ticket %>
-		<%= link_to '参加をキャンセルする', event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning btn-lg btn-block" %>
+		<%= link_to '参加をキャンセルする', idobata_ticket_path(@idobata, @ticket), method: :delete, class: "btn btn-warning btn-lg btn-block" %>
 	<% elsif user_signed_in? %>
 		<button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#createTicket">
 			参加する
@@ -69,7 +64,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="dialogHeader">参加コメント</h4>
 					</div>
-					<%= form_for(@event.tickets.build, url: event_tickets_path(@event), remote: true) do |f| %>
+					<%= form_for(@idobata.tickets.build, url: idobata_tickets_path(@idobata), remote: true) do |f| %>
 						<div class="modal-body">
 							<%= f.text_field :comment, class: 'form-control' %>
 						</div>
@@ -83,7 +78,7 @@
 		</div>
 
 	<% else %>
-	 <%= link_to '参加する', new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block" %>
+	 <%= link_to '参加する', new_idobata_ticket_path(@idobata), class: "btn btn-primary btn-lg btn-block" %>
 	<% end %>
 	<hr>
 		<div class="panel panel-default">

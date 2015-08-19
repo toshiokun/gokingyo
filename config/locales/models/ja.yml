@@ -2,7 +2,7 @@ ja:
   activerecord: 
     models:
       user: ユーザー
-      event: イベント
+      event: いどばた
       ticket: チケット
     attributes:
       user:
@@ -15,5 +15,6 @@ ja:
         start_time: 開始時間 
         end_time: 終了時間 
         content: 内容 
+        event_image: いどばた画像
       ticket:
         comment: コメント

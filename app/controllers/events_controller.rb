@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-	PER = 2
+	PER = 10
 
 	def index
-		@events = Event.page(params[:page]).per(PER).
-			where('start_time > ?', Time.zone.now).order(:start_time)
+		@search = Event.page(params[:page]).per(PER).order(:start_time).search(search_params)
+		@events = @search.result(distinct: true)
 	end
 
 	def edit
@@ -45,10 +45,17 @@ class EventsController < ApplicationController
 	end
 
 	private
-
 	def event_params
 		params.require(:event).permit(
-			:name, :place, :content, :start_time, :end_time
+			:name, :place, :content, :start_time, :end_time, 
+			:event_image, :event_image_cache, :remove_event_image
 		)
+	end
+
+	private
+	def search_params
+		params.require(:q).permit!
+	rescue
+		{ start_time_qteq: Time.zone.now }
 	end
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_search
   protected
     def configure_permitted_parameters
       	devise_parameter_sanitizer.for(:sign_up) do |u|
@@ -14,4 +15,8 @@ class ApplicationController < ActionController::Base
         		:email, :password, :password_confirmation, :current_password)
     	end
     end
+
+  def set_search
+    @search = Event.search(params[:q])
+  end
 end

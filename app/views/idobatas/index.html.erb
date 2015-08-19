@@ -1,0 +1,16 @@
+<div class="page-header">
+	<h1>イベント一覧</h1>
+ </div>
+ <div class="list-group">
+ 	<% @idobatas.each do |idobata| %>
+ 		<%= link_to(idobata, class: 'list-group-item') do %>
+ 		<h4 class="list-group-item-heading">
+ 		<%= idobata.name %>
+ 		</h4>
+ 		<p class="list-group-item-text">
+ 			<%= idobata.start_time.strftime('%Y/%m/%D %H:%M') %> - <%= idobata.end_time.strftime('%Y/%m/%D %H:%M') %>
+ 		</p>
+ 		<% end %>
+ 	<% end %>
+ 	<%= paginate @idobatas %>
+ </div>
