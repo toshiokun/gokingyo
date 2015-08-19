@@ -69,14 +69,35 @@ p {
 
 /* header */
 header {
-  nav ul li{
+  ul#loginNav li {
     float: right;
-    border-right: 1px solid #e6e4e4;
-    border-bottom: 1px solid #e6e4e4;
+    text-decoration: none; 
+    color: #557184;
+    margin-top: 15px;
+    padding-left: 10px;
+    list-style:none;
     box-sizing: border-box;
   }
-  nav ul li a:hover {
-    background:#f5f5dc;
+  ul#loginNav li + li {
+    padding-right: 5px;
+  }
+
+  ul#unloginNav li {
+    float: right;
+    text-decoration: none; 
+    color: #557184;
+    padding-left: 10px;
+    list-style:none;
+    box-sizing: border-box;
+  }
+  ul#unloginNav li + li {
+    padding-right: 10px;
+    border-right: 1px solid #999;
+  }
+
+  h2 {
+    float: left;
+    font-family: fantsy;
   }  
 }
 
@@ -85,7 +106,7 @@ header {
 }
 
 .navbar {
-  min-height: 38px;
+  max-height: 57px;
   background-color: #87CEEB;
 }
 

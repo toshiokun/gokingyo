@@ -1,27 +1,32 @@
 <header class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
     <div class="container">
       <%= link_to image_tag("logo.jpg"), root_path, id: "logo"  %>
-      <nav>
-        <ul class="nav">
+          <h2><i>Sil-地域子育て情報コミュニティ</i></h2>
           <% if user_signed_in? %>
-          <div class="form-group navbar-form navbar-left pull-right">
+          <ul id="loginNav">
             <%= search_form_for(@search, url: events_path) do |f| %>
-              <%= f.text_field :name_cont, :placeholder => "いどばた検索", :size => "10px" %>
+              <li>
               <%= button_tag( class: "btn btn-default btn-sm") do %>
                 <%= content_tag :span, "検索", class: "glyphicon glyphicon-search" %>
+              </li>
+              <li>
+              <%= f.text_field :name_cont, :placeholder => "いどばた検索", :size => "20px" %>
+              </li>
               <% end %>
+            </ul>
             <% end %>
 
           <% else %>
-            <li><%= link_to '仮登録', new_user_registration_path %>
-            </li>
+          <ul id="unloginNav">
             <li>
                 <%= link_to 'ログイン', new_user_session_path %>
             </li>
+            <li>
+            <%= link_to '仮登録', new_user_registration_path %>
+            </li>
+            <li><%= link_to "ヘルプ", pages_help_path %></li>
+          </ul>
           <% end %>
         </ul>
-      </nav>
     </div>
-  </div>
 </header>
