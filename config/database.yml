@@ -26,10 +26,10 @@ test:
   socket: /var/lib/mysql/mysql.sock
  
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  database: Rails_production
+  database: d28mql9oai8kgv
+  port: 5432
   pool: 5
-  username: railsuser
-  password: gokingyo
-  socket: /var/lib/mysql/mysql.sock
+  username: bnxehzqyyxhjqq
+  password: Show
