@@ -24,14 +24,14 @@
 		<div class="col-xs-8">
 		<%= yield %>
 		</div>
+		<div class="col-xs-2">
+		<%= render 'layouts/sidebar_right' %>
+		</div>
 		<% else %>
 		<div class="col-xs-12">
 		<%= yield %>
 		</div>
 		<% end %>
-		<div class="col-xs-2">
-		<%= render 'layouts/sidebar_right' %>
-		</div>
 	</div>
 		<%= render 'layouts/footer' %>
 	</div>
