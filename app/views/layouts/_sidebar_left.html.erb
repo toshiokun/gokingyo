@@ -2,18 +2,11 @@
     <div>
       <nav>
         <ul class="nav">
-          <li><%= link_to "ホーム", root_path %></li>
-          <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
-          <li><%= link_to "ヘルプ", pages_help_path %></li>
           <li><%= link_to 'イベント一覧', events_path(category_id: 1) %></li>
           <li><%= link_to '病院関連', events_path(category_id: 2) %></li>
           <li><%= link_to '遊び場', events_path(category_id: 3) %></li>
           <li><%= link_to '子育て', events_path(category_id: 4) %></li>
           <li><%= link_to '教育機関', events_path(category_id: 5) %></li>          
-          <li><%= link_to 'いどばた', new_event_path %></li>
-          <li>
-                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-                </li>
         </ul>
       </nav>
     </div>

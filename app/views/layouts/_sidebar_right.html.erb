@@ -1,0 +1,14 @@
+<div id="sidebarRight" class="navbar-inner">
+    <div>
+      <nav>
+        <ul class="nav">
+          <li><%= link_to "ホーム", root_path %></li>
+          <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+          <li><%= link_to 'いどばた', new_event_path %></li>
+          <li>
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
