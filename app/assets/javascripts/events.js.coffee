@@ -4,6 +4,6 @@ $(document).ready ->
 		console.log val
 		if val isnt "1"
 			console.log "hoge"
-			$('.onlyEvent').hide()
+			#$('.onlyEvent').hide()
 		else
-			$('.onlyEvent').show()
+			#$('.onlyEvent').show()
