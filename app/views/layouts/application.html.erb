@@ -9,13 +9,20 @@
 <body>
 	<%= render 'layouts/header' %>
 	<div class="container-fluid">
+	<div class="row">
 		<% if notice %>
-		<p class="notice"><%= notice %></p>
+		<p class="alert alert-success"><%= notice %></p>
 		<% end %>
 		<% if alert %>
 		<p class="alert"><%= alert %></p>
 		<% end %>
+		<div class="col-xs-3">
+		<%= render 'layouts/sidebar_left' %>
+		</div>
+		<div class="col-xs-6">
 		<%= yield %>
+		</div>
+	</div>
 		<%= render 'layouts/footer' %>
 	</div>
 </body>
