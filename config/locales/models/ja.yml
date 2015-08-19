@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       event: いどばた
       ticket: チケット
+      micropost: 投稿
     attributes:
       user:
         name: 名前
@@ -18,3 +19,5 @@ ja:
         event_image: いどばた画像
       ticket:
         comment: コメント
+      micropost:
+        comment: 投稿

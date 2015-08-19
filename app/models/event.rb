@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 	mount_uploader :event_image, EventImageUploader
 	has_many :tickets, dependent: :destroy
+	has_many :microposts, dependent: :destroy
 	belongs_to :user, class_name: 'User'
 	validates :name, length: { maximum: 50 }, presence: true
 	validates :place, length: { maximum: 100 }, presence: true

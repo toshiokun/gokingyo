@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
    	validates :name, presence: true, length: { maximum: 20}
     has_many :created_events, class_name: 'Event', foreign_key: :user_id
     has_many :tickets
+    has_many :microposts
 
     def self.from_omniauth(auth)
         where(provider: auth["provider"], uid: auth["uid"]).first_or_create do |user|

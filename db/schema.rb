@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819043152) do
+ActiveRecord::Schema.define(version: 20150819051557) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20150819043152) do
   end
 
   add_index "events", ["user_id"], name: "index_idobatas_on_user_id", using: :btree
+
+  create_table "microposts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id",   null: false
+    t.string   "comment",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["event_id"], name: "index_microposts_on_event_id", using: :btree
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
 
   create_table "tickets", force: true do |t|
     t.integer  "user_id"

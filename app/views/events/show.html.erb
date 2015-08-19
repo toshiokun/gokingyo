@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-<div class="col-xs-8">
+<div>
 	<% if @event.event_image? %>
 		<div class="thumnail">
 			<%= image_tag @event.event_image.url %>
@@ -51,7 +51,7 @@
 	</div>
 </div>
 </div>
-<div class="col-xs-4">
+<div>
 	<% if @event.created_by?(current_user) %>
 		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info btn-lg btn-block' %>
 		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
@@ -104,6 +104,33 @@
 					<% end %>
 				</ul>
 			</div>
-		</div>	
+		</div>
+	<hr>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				投稿
+			</div>
+			<div class="panel-body">
+				<ul class="list-unstyled">
+					<% @microposts.each do |micropost| %>
+						<% if micropost.user %>
+						<li>
+							<%= micropost.user.name %>
+							<%= micropost.comment %>
+						</li>
+						<% else %>
+						退会したユーザーです
+						<% end %>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+
+
+		<%= form_for(@event.microposts.build, url: event_microposts_path(@event)) do |f| %>
+		<%= f.label :comment %>
+		<%= f.text_field :comment, class: 'form-control' %>
+		<%= f.button '投稿', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
+		<% end %>	
 	</div>
 </div>
