@@ -7,14 +7,16 @@
   </div>
 <% else %>
 
-	<div class="center hero-unit">
-    	<h1>ようこそSilへ！</h1>
-
-    	<h2>
-    		「Sil」は地域子育て情報共有サイトです
-    	</h2>
-
-	    <%= link_to "早速始めてみましょう！", new_user_registration_path,
+	<div class="keyVisualContainer">
+    	<div class="keyVisualContent">
+        <h1>「井戸端会議」のような感覚で地域情報を共有してみませんか？</h1>
+      	<h2>
+      		地域子育て情報コミュニティ「Sil」で新しい体験を
+      	</h2>
+      </div>
+  </div>
+      
+      <%= link_to "早速始めてみましょう！", new_user_registration_path,
                                 class: "btn btn-large btn-primary" %>
-	</div>
+	
 <% end %>

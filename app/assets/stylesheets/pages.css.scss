@@ -1,3 +1,24 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.keyVisualContainer {
+	position: relative;
+	background-image: image-url("image10.png");
+	background-size: 100%;
+	height: 500px;
+
+	.keyVisualContent {
+		position:absolute; 
+		top: 65%;
+		text-align: center;
+  		h1 {
+    		margin-bottom: 10px;
+  		}
+  		h2 {
+  			color: #000000;
+  		}
+	}
+}
+
+.startBtn {
+	position: absolute; 
+	left: 50%;
+	text-align: center;
+}
