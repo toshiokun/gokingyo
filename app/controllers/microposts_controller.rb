@@ -12,7 +12,7 @@ class MicropostsController < ApplicationController
 			m.comment = params[:micropost][:comment]
 		end
 		if micropost.save
-			redirect_to micropost.event, notice: '投稿が完了いたしました'
+			redirect_to event_microposts_path(micropost.event), notice: '投稿が完了いたしました'
 		else
 			render json: { messages: ticket.errors.full_messages }, status: 422
 		end
