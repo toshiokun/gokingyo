@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
 	PER = 10
+	before_filter :authenticate_user!
 
 	def index
 		@event = Event.find(params[:event_id])

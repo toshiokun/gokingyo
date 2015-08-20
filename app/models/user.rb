@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     has_many :created_events, class_name: 'Event', foreign_key: :user_id
     has_many :tickets
     has_many :microposts
+    has_many :favorites
 
     def self.from_omniauth(auth)
         where(provider: auth["provider"], uid: auth["uid"]).first_or_create do |user|

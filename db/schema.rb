@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819065434) do
+ActiveRecord::Schema.define(version: 20150820051508) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20150819065434) do
   end
 
   add_index "events", ["user_id"], name: "index_idobatas_on_user_id", using: :btree
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "micropost_id", null: false
+    t.integer  "fav_flg"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["micropost_id"], name: "index_favorites_on_micropost_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "microposts", force: true do |t|
     t.integer  "user_id"

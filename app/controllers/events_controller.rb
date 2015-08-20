@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	PER = 10
+	before_filter :authenticate_user!
 
 	def index
 		if params[:category_id].nil?

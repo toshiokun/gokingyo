@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :events do
     resources :tickets
-    resources :microposts
+    resources :microposts do
+      resources :favorites
+    end
   end
 
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }

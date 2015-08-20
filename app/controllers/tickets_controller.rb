@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+	before_filter :authenticate_user!
 
 	def now
 		raise ActionController::RoutingError 'ログイン状態で TicketsController#new にアクセス'

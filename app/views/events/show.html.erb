@@ -4,13 +4,14 @@
 	</h1>
 </div>
 
-<div class="row">
 <div>
-	<% if @event.event_image? %>
-		<div class="thumnail">
-			<%= image_tag @event.event_image.url %>
-		</div>
-	<% end %>
+	<div>
+		<% if @event.event_image? %>
+			<div class="thumnail">
+				<%= image_tag @event.event_image.url %>
+			</div>
+		<% end %>
+	</div>
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<div class="panel-title">主催者</div>
@@ -50,21 +51,48 @@
 		<%= @event.content %>
 	</div>
 </div>
-</div>
-<div>
-	<% if @event.created_by?(current_user) %>
-		<div class="col-xs-4">
-		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info btn-lg btn-block' %>
-		</div>
-		<div class="col-xs-4">
-		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
+	<% if @event.category_id == 1 %>
+	<hr>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				参加者
+			</div>
+			<div class="panel-body">
+				<ul class="list-unstyled">
+					<% @tickets.each do |ticket| %>
+						<% if ticket.user %>
+						<li>
+							<%= ticket.user.name %>
+							<%= ticket.comment %>
+						</li>
+						<% else %>
+						退会したユーザーです
+						<% end %>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	<% end %>
-	<div class="col-xs-4">
+	<hr>
+	<div>
+		<%= link_to 'コメント一覧', event_microposts_path(@event), class: "btn btn-primary" %>
+
+		<%= form_for(@event.microposts.build, url: event_microposts_path(@event)) do |f| %>
+		<%= f.label :comment %>
+		<%= f.text_field :comment, class: 'form-control' %>
+		<%= f.button '投稿する', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
+		<% end %>
+	</div>
+	<hr>
+	<div>
+	<% if @event.created_by?(current_user) %>
+		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info' %>
+		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
+	<% end %>
 	<% if @ticket %>
-		<%= link_to '参加をキャンセルする', event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning btn-lg btn-block" %>
+		<%= link_to '参加をキャンセルする', event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning" %>
 	<% elsif user_signed_in? %>
-		<button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#createTicket">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#createTicket">
 			参加する
 		</button>
 		<div class="modal fade" id="createTicket" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" aria-hidden="true">
@@ -88,39 +116,7 @@
 		</div>
 
 	<% else %>
-	</div>
-	 <%= link_to '参加する', new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block" %>
+	 <%= link_to '参加する', new_event_ticket_path(@event), class: "btn btn-primary" %>
 	<% end %>
-	</div>
-	<hr>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				参加者
-			</div>
-			<div class="panel-body">
-				<ul class="list-unstyled">
-					<% @tickets.each do |ticket| %>
-						<% if ticket.user %>
-						<li>
-							<%= ticket.user.name %>
-							<%= ticket.comment %>
-						</li>
-						<% else %>
-						退会したユーザーです
-						<% end %>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	<hr>
-		<div>
-			<%= link_to 'コメント一覧', event_microposts_path(@event), class: "btn btn-primary" %>
-
-		<%= form_for(@event.microposts.build, url: event_microposts_path(@event)) do |f| %>
-		<%= f.label :comment %>
-		<%= f.text_field :comment, class: 'form-control' %>
-		<%= f.button '投稿する', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
-		<% end %>
-		</div>	
-	</div>
+</div>
 </div>
