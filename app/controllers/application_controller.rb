@@ -2,8 +2,10 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  include Jpmobile::ViewSelector
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_search
+  before_filter :set_view_path
   protected
     def configure_permitted_parameters
       	devise_parameter_sanitizer.for(:sign_up) do |u|
@@ -14,6 +16,12 @@ class ApplicationController < ActionController::Base
      	 	u.permit(:name, :profile,
         		:email, :password, :password_confirmation, :current_password)
     	end
+    end
+
+  private
+    def set_view_path
+      path =  request.smart_phone? ? 'smartphone' : 'pc'
+      prepend_view_path(Rails.root + 'app/views' + path)
     end
 
   def set_search
