@@ -18,4 +18,10 @@ class MicropostsController < ApplicationController
 			render json: { messages: ticket.errors.full_messages }, status: 422
 		end
 	end
+
+	def destroy
+		@micropost = Micropost.find(params[:id])
+		@micropost.destroy!
+		redirect_to event_microposts_path(@micropost.event), notice: '削除しました'
+	end
 end
