@@ -1,0 +1,38 @@
+<div>
+	<h1>
+		<%= @event.name %>のコメント一覧
+	</h1>
+</div>
+
+	<ol class="microposts">
+				<% @microposts.each do |micropost| %>
+				<li>
+						<% if micropost.user %>
+						<span class="user">
+						<%= micropost.user.name %>
+						</span>
+						<span class="content">
+							<%= micropost.comment %>
+						</span>
+						<% else %>
+						退会したユーザーです
+						<% end %>
+						<span class="timestamp">
+ 					     投稿日時: <%= micropost.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[micropost.created_at.wday]}) %H:%M:%S")  %>
+   						</span>
+   						<% if current_user == micropost.user %>
+    <%= link_to "削除", event_micropost_path(id:micropost.id), method: :delete,
+                                     data: { confirm: "本当に削除してもよろしいですか?" },
+                                     title: micropost.comment %>
+						  <% end %>
+   				</li>
+   			<% end %>
+		</ol>
+
+		<hr>
+
+		<%= form_for(@event.microposts.build, url: event_microposts_path(@event)) do |f| %>
+		<%= f.label :comment %>
+		<%= f.text_field :comment, class: 'form-control' %>
+		<%= f.button '投稿する', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
+		<% end %>	

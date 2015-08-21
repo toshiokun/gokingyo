@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+  <div class="row-fluid">
+    <div class="span12">
+      <h3>プロフィール</h3>
+      <p>工事中………</p>
+    </div>
+  </div>
+<% else %>
+
+	<div class="keyVisualContainer">
+    	<div class="keyVisualContent">
+        <h1>「井戸端会議」のような感覚で地域情報を<br>共有してみませんか？</h1>
+      	<h2>
+      		地域子育て情報コミュニティ「Sil」で新しい体験を
+      	</h2>
+      </div>
+  </div>
+  <div class="center">
+      <%= link_to "「Sil」に登録するにはこちらから！", new_user_registration_path,
+                                class: "btn btn-large btn-danger" %>
+	</div>
+<% end %>
