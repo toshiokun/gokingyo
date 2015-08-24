@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
   def index
     count = 0
-    current_user.microposts.each do |m|
-      count = count + m.favorites.count
+    if user_signed_in?
+      current_user.microposts.each do |m|
+        count = count + m.favorites.count
+      end
     end
     @count = count
   end
