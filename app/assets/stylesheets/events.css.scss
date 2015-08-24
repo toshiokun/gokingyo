@@ -1,0 +1,21 @@
+div#tab{
+    position: absolute;
+    width: 100%;
+    top:0px;
+    left:0px;
+}
+
+/*タブベース*/
+div#tab a{
+    height: 2.5em;
+    line-height: 2.5em;
+    width: 19%;
+    margin: 0 1% 0 0;
+    display: block;
+    color:#333;
+    background:#eee;
+    text-align: center;
+    text-decoration:none;
+    border-radius: 5px 5px 0px 0px;
+    float: left;
+}

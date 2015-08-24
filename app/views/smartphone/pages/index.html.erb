@@ -6,9 +6,8 @@
       <div class="thumnail">
         <%= image_tag current_user.user_image.url,:size => "100x100" %>
       </div>
-      <h3><%= current_user.name %></h3>
       <h3>投稿数:<%= current_user.microposts.count %></h3>
-      <h3>お役立ち数:<%= current_user.favorites.count %></h3>
+      <h3>お役立ち数:<%= @count %></h3>
     </div>
   </div>
 <% else %>
