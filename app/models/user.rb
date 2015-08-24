@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
-   	validates :name, presence: true, length: { maximum: 20}
+   	mount_uploader :user_image, UserImageUploader
+    validates :name, presence: true, length: { maximum: 20}
     has_many :created_events, class_name: 'Event', foreign_key: :user_id
     has_many :tickets
     has_many :microposts

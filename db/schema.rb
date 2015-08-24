@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820051508) do
+ActiveRecord::Schema.define(version: 20150824062015) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150820051508) do
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
     t.integer  "micropost_id", null: false
-    t.integer  "fav_flg"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,6 +86,7 @@ ActiveRecord::Schema.define(version: 20150820051508) do
     t.string   "username",               default: "anonymous"
     t.string   "name",                   default: "",          null: false
     t.string   "profile",                default: ""
+    t.string   "user_image"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

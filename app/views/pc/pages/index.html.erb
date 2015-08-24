@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
   <div class="row-fluid">
     <div class="span12">
-      <h3>プロフィール</h3>
-      <p>工事中………</p>
+      <h1>プロフィール</h1>
+      <h3><%= current_user.name %></h3>
     </div>
   </div>
 <% else %>
