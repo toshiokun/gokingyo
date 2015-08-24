@@ -3,6 +3,7 @@
     <div class="span12">
       <h1>プロフィール</h1>
       <h3><%= current_user.name %></h3>
+      <h3>投稿数:<%= current_user.microposts.count %></h3>
     </div>
   </div>
 <% else %>

@@ -1,8 +1,9 @@
 <% if user_signed_in? %>
   <div class="row-fluid">
     <div class="span12">
-      <h3>プロフィール</h3>
-      <p><%= current_user.name %></p>
+      <h1>プロフィール</h1>
+      <h3><%= current_user.name %></h3>
+      <h3>投稿数:<%= current_user.microposts.count %></h3>
     </div>
   </div>
 <% else %>
