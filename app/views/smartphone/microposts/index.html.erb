@@ -21,10 +21,15 @@
  					     投稿日時: <%= micropost.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[micropost.created_at.wday]}) %H:%M:%S")  %>
    						</span>
    						<% if current_user == micropost.user %>
-    <%= link_to "削除", event_micropost_path(id:micropost.id), method: :delete,
+						    <%= link_to "削除", event_micropost_path(id:micropost.id), method: :delete,
                                      data: { confirm: "本当に削除してもよろしいですか?" },
                                      title: micropost.comment %>
-						  <% end %>
+                        <% end %>
+                        <% if current_user && current_user.favorites.find_by(micropost_id: micropost.id) %>
+						    <%= link_to "お気に入り解除", event_micropost_favorite_path(@event, micropost, current_user.favorites.find_by(micropost_id: micropost.id)), method: :delete %>
+						<% else %>
+							<%= link_to "お気に入り",event_micropost_favorites_path(micropost_id: micropost.id), method: :post %>
+						<% end %>
    				</li>
    			<% end %>
 		</ol>

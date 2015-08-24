@@ -7,18 +7,18 @@ class FavoritesController < ApplicationController
 
 	def create
 		favorite = current_user.favorites.build do |t|
-			t.event_id = params[:event_id]
+			t.micropost_id = params[:micropost_id]
 		end
 		if favorite.save
-			head 201
+			redirect_to event_microposts_path(favorite.micropost.event)
 		else
 			render json: { messages: ticket.errors.full_messages }, status: 422
 		end
 	end
 
 	def destroy
-		favorite = current_user.favorites.find_by(event_id: params[:event_id])
+		favorite = current_user.favorites.find_by(micropost_id: params[:micropost_id])
 		favorite.destroy!
-		redirect_to event_microposts_path(favorite.event)
+		redirect_to event_microposts_path(favorite.micropost.event)
 	end	
 end
