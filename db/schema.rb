@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824062015) do
+ActiveRecord::Schema.define(version: 20150829073202) do
+
+  create_table "answers", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.integer  "answer_flg"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.string   "adress"
+    t.string   "profile"
+    t.string   "company_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -50,6 +71,14 @@ ActiveRecord::Schema.define(version: 20150824062015) do
   add_index "microposts", ["event_id"], name: "index_microposts_on_event_id", using: :btree
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
 
+  create_table "questions", force: true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.string   "question_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tickets", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id",   null: false
@@ -87,6 +116,9 @@ ActiveRecord::Schema.define(version: 20150824062015) do
     t.string   "name",                   default: "",          null: false
     t.string   "profile",                default: ""
     t.string   "user_image"
+    t.integer  "sil_point",              default: 0,           null: false
+    t.integer  "user_status",            default: 0,           null: false
+    t.string   "full_name"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

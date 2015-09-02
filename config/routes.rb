@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :events do
     resources :tickets
     resources :microposts do
@@ -6,7 +7,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :questions do
+    resources :answers
+  end
+
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
+  match 'users/:id' => 'users#show', via: :get
+  resources :users, only: [:show]
   root "pages#index"
   get "pages/show"
   get "pages/help"

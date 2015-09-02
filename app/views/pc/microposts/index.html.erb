@@ -9,7 +9,7 @@
 				<li>
 						<% if micropost.user %>
 						<span class="user">
-						<%= micropost.user.name %>
+						<%= link_to micropost.user.name, micropost.user %>
 						</span>
 						<span class="content">
 							<%= micropost.comment %>

@@ -8,15 +8,17 @@
       </div>
       <h3>投稿数:<%= current_user.microposts.count %></h3>
       <h3>お役立ち数:<%= @count %></h3>
+      <h3>プロフィール:</h3><span><%= @current_user.profile %></span>
+      <h3>Silポイント:</h3><span><%= @current_user.sil_point %></span>
     </div>
   </div>
 <% else %>
 
 	<div class="keyVisualContainer">
     	<div class="keyVisualContent">
-        <h1>「井戸端会議」のような感覚で地域情報を<br>共有してみませんか？</h1>
+        <h1>同じ地域で子育てをするママたちの語らいの場<br>情報共有に参加してみませんか？</h1>
       	<h2>
-      		地域子育て情報コミュニティ「Sil」で新しい体験を
+      		忙しいママ達の「”知らない”から、”知る”へ」をサポートいたします
       	</h2>
       </div>
   </div>
