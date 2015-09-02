@@ -1,0 +1,12 @@
+<div class="row-fluid">
+    <div class="span12">
+      <h1>プロフィール</h1>
+      <h2><%= @user.name %></h2>
+      <div class="thumnail">
+        <%= image_tag @user.user_image.url,:size => "100x100" %>
+      </div>
+      <h3><%= @user.name %></h3>
+      <h3>投稿数:<%= @user.microposts.count %></h3>
+      <h3>お役立ち数:<%= @user.microposts.count %></h3>
+  </div>
+</div>
