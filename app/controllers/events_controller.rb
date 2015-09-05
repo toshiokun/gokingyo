@@ -5,10 +5,12 @@ class EventsController < ApplicationController
 	def index
 		if params[:category_id].nil?
 			@search = Event.page(params[:page]).per(PER).order(:created_at).search(search_params)
-			@events = @search.result(distinct: true)
+			@before_events = @search.result(distinct: true)
+			@events = @before_events.where(address_status: current_user.address_status)
 		else
 			@search = Event.page(params[:page]).per(PER).where(category_id: params[:category_id]).order(:created_at).search(search_params)
-			@events = @search.result(distinct: true)
+			@before_events = @search.result(distinct: true)
+			@events = @before_events.where(address_status: current_user.address_status)
 		end
 	end
 
@@ -54,9 +56,10 @@ class EventsController < ApplicationController
 	private
 	def event_params
 		params.require(:event).permit(
-			:name, :place, :content, :category_id, :address_status,
+			:name, :content, :category_id, :address_status,
 			:event_image, :event_image_cache, :remove_event_image
 		)
+		params.address_status = current_user.address_status
 	end
 
 	private

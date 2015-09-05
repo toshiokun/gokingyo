@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
 	has_many :microposts, dependent: :destroy
 	belongs_to :user, class_name: 'User'
 	validates :name, length: { maximum: 50 }, presence: true
-	validates :place, length: { maximum: 100 }, presence: true
 	validates :content, length: { maximum: 2000 }, presence: true
 
 	def created_by?(user)
