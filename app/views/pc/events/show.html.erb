@@ -30,7 +30,7 @@
 		いどばた内容
 	</div>
 	<div class="panel-body">
-		<%= @event.content %>
+		<%= nl2br @event.content %>
 	</div>
 </div>
 	<% if @event.category_id == 1 %>

@@ -7,4 +7,8 @@ module ApplicationHelper
       		"#{base_title} | #{page_title}"
     	end
   	end
+
+  	def nl2br(str)
+		str.gsub(/\r\n|\r|\n/, "<br/>")
+	end
 end
