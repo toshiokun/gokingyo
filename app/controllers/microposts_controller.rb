@@ -11,6 +11,7 @@ class MicropostsController < ApplicationController
 		micropost = current_user.microposts.build do |m|
 			m.event_id = params[:event_id]
 			m.comment = params[:micropost][:comment]
+			m.micropost_image = params[:micropost][:micropost_image]
 		end
 		if micropost.save
 			redirect_to event_microposts_path(micropost.event), notice: '投稿が完了いたしました'

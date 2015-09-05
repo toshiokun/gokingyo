@@ -12,8 +12,13 @@
 						<%= link_to micropost.user.name, micropost.user %>
 						</span>
 						<span class="content">
-							<%= nl2br micropost.comment %>
+							<%= auto_link(nl2br(micropost.comment), html: { target: '_blank' }, link: :urls) %>
 						</span>
+						<% if micropost.micropost_image? %>
+						<div class="thumnail">
+							<%= image_tag micropost.micropost_image.url %>
+						</div>
+						<% end %>
 						<% else %>
 						退会したユーザーです
 						<% end %>
@@ -39,5 +44,9 @@
 		<%= form_for(@event.microposts.build, url: event_microposts_path(@event)) do |f| %>
 		<%= f.label :comment %>
 		<%= f.text_field :comment, class: 'form-control' %>
+		<div class="form-group">
+			<%= f.file_field :micropost_image %>
+			<%= f.hidden_field :micropost_image_cache %>
+		</div>
 		<%= f.button '投稿する', class: "btn btn-primary", data: { disable_with: '送信中…' } %>
 		<% end %>	

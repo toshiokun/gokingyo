@@ -30,7 +30,7 @@
 		いどばた内容
 	</div>
 	<div class="panel-body">
-		<%= nl2br @event.content %>
+		<%= auto_link(nl2br(@event.content), html: { target: '_blank' }, link: :urls) %>
 	</div>
 </div>
 	<% if @event.category_id == 1 %>

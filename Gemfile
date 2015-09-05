@@ -4,6 +4,7 @@ ruby '2.1.2'
 
 gem 'rails', '4.1.0'
 gem 'jpmobile', '4.1.0'
+gem 'rails_autolink'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'sprockets', '2.11.0'

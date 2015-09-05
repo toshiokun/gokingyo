@@ -21,7 +21,7 @@
 	</div>
 	<div class="form-group">
 		<%= f.label :category_id %>
-		<%= f.select :category_id, [["地域イベント・遊び場", 1], ["病院関連", 2], ["防犯情報", 3], ["子育て相談", 4], ["おさがりフリマ", 5]], class: 'form-control' %>
+		<%= f.select :category_id, [["地域イベント・遊び場", 1], ["病院関連", 2], ["防犯情報", 3], ["子育て相談", 4], ["おさがりフリマ", 5]],["サークル", 6], class: 'form-control' %>
 	</div>
 	<div class="form-group">
 		<% if @event.event_image? %>
