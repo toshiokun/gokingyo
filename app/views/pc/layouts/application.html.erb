@@ -18,7 +18,10 @@
 		<p class="alert alert-danger"><%= alert %></p>
 		<% end %>
 		<% if user_signed_in? %>
-		<div class="col-xs-10">
+		<div class="col-xs-2">
+		<%= render 'layouts/sidebar_left' %>
+		</div>
+		<div class="col-xs-8">
 		<%= yield %>
 		</div>
 		<div class="col-xs-2">

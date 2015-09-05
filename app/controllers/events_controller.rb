@@ -4,10 +4,10 @@ class EventsController < ApplicationController
 
 	def index
 		if params[:category_id].nil?
-			@search = Event.page(params[:page]).per(PER).order(:start_time).search(search_params)
+			@search = Event.page(params[:page]).per(PER).order(:created_at).search(search_params)
 			@events = @search.result(distinct: true)
 		else
-			@search = Event.page(params[:page]).per(PER).where(category_id: params[:category_id]).order(:start_time).search(search_params)
+			@search = Event.page(params[:page]).per(PER).where(category_id: params[:category_id]).order(:created_at).search(search_params)
 			@events = @search.result(distinct: true)
 		end
 	end
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 	private
 	def event_params
 		params.require(:event).permit(
-			:name, :place, :content, :category_id, :start_time, :end_time, 
+			:name, :place, :content, :category_id, :address_status,
 			:event_image, :event_image_cache, :remove_event_image
 		)
 	end
@@ -63,6 +63,6 @@ class EventsController < ApplicationController
 	def search_params
 		params.require(:q).permit!
 	rescue
-		{ start_time_qteq: Time.zone.now }
+		{ name_qteq: "" }
 	end
 end

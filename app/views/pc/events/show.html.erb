@@ -27,15 +27,6 @@
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		開催時間
-	</div>
-	<div class="panel-body">
-		<%= @event.start_time.strftime('%Y/%m/%D %H:%M') %> - <%= @event.end_time.strftime('%Y/%m/%D %H:%M') %>
-	</div>
-</div>
-
-<div class="panel panel-primary">
-	<div class="panel-heading">
 		開催場所
 	</div>
 	<div class="panel-body">
@@ -90,6 +81,7 @@
 		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info' %>
 		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
 	<% end %>
+	<% if @event.category_id == 1 %>
 	<% if @ticket %>
 		<%= link_to '参加をキャンセルする', event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning" %>
 	<% elsif user_signed_in? %>
@@ -118,6 +110,7 @@
 
 	<% else %>
 	 <%= link_to '参加する', new_event_ticket_path(@event), class: "btn btn-primary" %>
+	<% end %>
 	<% end %>
 </div>
 </div>

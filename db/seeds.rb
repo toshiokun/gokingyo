@@ -1,5 +1,6 @@
 # coding: utf-8
 
-user = User.new(email: 'gokingyo@sil.com', password: 'gokingyo', password_confirmation: 'gokingyo', name: "ご金魚")
-user.save
-user.confirm!
+
+Address.create(:name => '東京都日野市')
+Address.create(:name => '東京都八王子市')
+Address.create(:name => '東京都立川市')

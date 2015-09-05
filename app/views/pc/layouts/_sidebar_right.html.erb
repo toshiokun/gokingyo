@@ -4,8 +4,8 @@
         <ul class="nav">
           <li><%= link_to "ホーム", root_path, class: "glyphicon glyphicon-home rightBtn" %></li>
           <li><%= link_to 'プロフィール変更', edit_user_registration_path, class: "glyphicon glyphicon-file rightBtn" %></li>
-          <li><%= link_to 'スレッド一覧', events_path, class: "glyphicon glyphicon-edit rightBtn" %></li>
-          <li><%= link_to 'いどばた', new_event_path, class: "glyphicon glyphicon-edit rightBtn" %></li>
+          <li><%= link_to 'いどばた一覧', events_path, class: "glyphicon glyphicon-edit rightBtn" %></li>
+          <li><%= link_to 'いどばた立ち上げ', new_event_path, class: "glyphicon glyphicon-edit rightBtn" %></li>
           <li>
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out rightBtn" %>
                 </li>

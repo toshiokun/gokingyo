@@ -7,7 +7,9 @@ ja:
       micropost: 投稿
     attributes:
       user:
-        name: 名前
+        name: ニックネーム
+        full_name: 本名
+        address_status: 住まいどころ
         email: メールアドレス
         password: パスワード
       event: 

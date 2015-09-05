@@ -1,5 +1,9 @@
-<p>Silに無料ありがとうございます</p>
+<p>Silに仮登録ありがとうございます</p>
 
-<p>以下のリンクをクリックすると本登録が完了いたします</p>
+<p><%= @resource.name %>さん はじめまして！</p>
+<p>にご登録ありがとうございます。</p>
+<p>これからぜひ一緒にSilのサイトを盛り上げていってください。</p>
+
+ログイン画面は以下のURLからお進みください
 
 <p><%= link_to 'Sil本登録', confirmation_url(@resource, confirmation_token: @token) %></p>

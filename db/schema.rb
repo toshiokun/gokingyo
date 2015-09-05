@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829073202) do
+ActiveRecord::Schema.define(version: 20150905083909) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -36,16 +42,15 @@ ActiveRecord::Schema.define(version: 20150829073202) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
-    t.string   "name",                    null: false
-    t.string   "place",                   null: false
-    t.datetime "start_time",              null: false
-    t.datetime "end_time",                null: false
-    t.text     "content",                 null: false
+    t.string   "name",                       null: false
+    t.string   "place",                      null: false
+    t.text     "content",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "event_image"
-    t.integer  "category_id", default: 1, null: false
+    t.integer  "category_id",    default: 1, null: false
+    t.integer  "address_status", default: 1, null: false
   end
 
   add_index "events", ["user_id"], name: "index_idobatas_on_user_id", using: :btree
@@ -119,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150829073202) do
     t.integer  "sil_point",              default: 0,           null: false
     t.integer  "user_status",            default: 0,           null: false
     t.string   "full_name"
+    t.integer  "address_status",         default: 1,           null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
