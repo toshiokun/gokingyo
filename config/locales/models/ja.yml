@@ -14,8 +14,8 @@ ja:
         password: パスワード
       event: 
         name: 名前  
-        content: 内容 
-        event_image: いどばた画像
+        content: いどばた説明
+        event_image_url: いどばた画像
         category_id: カテゴリー
       ticket:
         comment: コメント
