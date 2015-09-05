@@ -12,7 +12,7 @@
 						<%= link_to micropost.user.name, micropost.user %>
 						</span>
 						<span class="content">
-							<%= micropost.comment %>
+							<%= nl2br micropost.comment %>
 						</span>
 						<% else %>
 						退会したユーザーです
