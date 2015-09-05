@@ -55,11 +55,11 @@ class EventsController < ApplicationController
 
 	private
 	def event_params
+		params[:event][:address_status] = current_user.address_status
 		params.require(:event).permit(
 			:name, :content, :category_id, :address_status,
 			:event_image, :event_image_cache, :remove_event_image
 		)
-		params.address_status = current_user.address_status
 	end
 
 	private
