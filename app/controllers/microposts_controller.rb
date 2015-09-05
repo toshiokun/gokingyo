@@ -15,7 +15,7 @@ class MicropostsController < ApplicationController
 		if micropost.save
 			redirect_to event_microposts_path(micropost.event), notice: '投稿が完了いたしました'
 		else
-			render json: { messages: ticket.errors.full_messages }, status: 422
+			render json: { messages: micropost.errors.full_messages }, status: 422
 		end
 	end
 

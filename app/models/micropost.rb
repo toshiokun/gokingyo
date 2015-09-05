@@ -3,5 +3,4 @@ class Micropost < ActiveRecord::Base
   belongs_to :event
   has_many :favorites
 
-  validates :comment, allow_blank: false
 end
