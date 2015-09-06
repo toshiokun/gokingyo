@@ -69,8 +69,8 @@
 	<hr>
 	<div>
 	<% if @event.created_by?(current_user) %>
-		<%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info' %>
-		<%= link_to 'イベントを削除する', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
+		<%= link_to 'いどばたを編集する', edit_event_path(@event), class: 'btn btn-info' %>
+		<%= link_to 'いどばたを削除する', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除いたしますか？'} %>
 	<% end %>
 	<% if @event.category_id == 1 %>
 	<% if @ticket %>
