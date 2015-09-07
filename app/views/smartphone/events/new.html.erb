@@ -22,9 +22,9 @@
 	<div class="form-group">
 		<%= f.label :category_id %>
 		<% if current_user.id == 3 %>
-		<%= f.select :category_id, [["地域イベント・遊び場", 1], ["病院関連", 2], ["防犯情報", 3], ["子育て相談", 4], ["おさがりフリマ", 5], ["サークル", 6], ["Sil感想", 7]], class: 'form-control' %>
+		<%= f.select :category_id, [["地域イベント・遊び場", 1], ["病院関連", 2], ["子育て相談", 4], ["おさがりフリマ", 5], ["サイト利用者交流", 7]], class: 'form-control' %>
 		<% elsif %>
-		<%= f.select :category_id, [["地域イベント・遊び場", 1], ["病院関連", 2], ["防犯情報", 3], ["子育て相談", 4], ["おさがりフリマ", 5], ["サークル", 6]], class: 'form-control' %>
+		<%= f.select :category_id, [["地域イベント・遊び場", 1], ["病院関連", 2], ["防犯情報", 3], ["子育て相談", 4], ["おさがりフリマ", 5]], class: 'form-control' %>
 		<% end %>
 	</div>
 	<div class="form-group">
